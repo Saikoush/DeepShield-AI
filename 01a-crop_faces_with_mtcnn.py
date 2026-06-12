@@ -6,12 +6,13 @@ from keras import backend as K
 import tensorflow as tf
 print(tf.__version__)
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
-
-physical_devices = tf.config.list_physical_devices('GPU')
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
 print(physical_devices)
-tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
-base_path = '.\\train_sample_videos\\'
+if len(physical_devices) > 0:
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+
+base_path = './train_sample_videos/'
 
 def get_filename_only(file_path):
     file_basename = os.path.basename(file_path)

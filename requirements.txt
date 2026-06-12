@@ -1,4 +1,4 @@
-numpy
+python 03-train_cnn.pynumpy
 pandas
 tensorflow
 keras>=2.2.0
